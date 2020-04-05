@@ -1,0 +1,8 @@
+**/run/*
+.DS_Store
+*/*/Bll/*
+*/*/HBA/*
+*/*/HBM/*
+**/junk*
+*.o
+.git_d*

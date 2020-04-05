@@ -1,0 +1,36 @@
+#include	<md.h>
+#include        <water.h>
+#include	<system.h>
+
+liqForce(pos, force)
+    tripd	*pos;
+    tripd	*force;
+{
+    int i,nw;
+
+    nw = natoms - nEr - nDDC*DDCsites;
+    tc++;
+    VLIQ = V_EW = V_ED = DDCNB = V_WD = 0.0;
+    EW_C = ED_C = DD_C = WD_C = VINT = 0.0;
+    INTRADDC = VWATTS = WATERV = H2OC = 0.0;
+    shellO_1 = shellO_2 = 0;
+
+    if(nEr==1){
+	ErForce();
+	VLIQ += V_EW + V_ED;
+	Erz = pos[natoms-1].fz;
+    }
+    if(nDDC>0){
+	DDCForce();
+	VLIQ += DDCNB + INTRADDC;
+    }
+    if(nw>0){
+	waterForce(pos,force,nw);
+	VLIQ += WATERV + VWATTS;
+	if(nDDC>0){
+	    waterDDC(pos,force);
+	    VLIQ += V_WD;
+	}
+    }
+
+}

@@ -1,0 +1,46 @@
+READF = readbin.o globals.o
+WRITF = writebin.o globals.o
+ADDMF = addmol.o getmass.o rotcoord.o wfile.o globals.o
+INI = insertIon.o getmass.o globals.o
+INW = insertW.o getmass.o globals.o
+ADDW = addW.o getmass.o globals.o
+
+CLIBES = -lm
+CFLAGS = -I../include -I/usr/include/bsd
+DFLAGS =  -g
+
+INCLUDE = ../include/globals.h ../include/atomtypes.h ../include/typedefs.h
+
+.c.o:	;cc -c -DFLAGS='"@$@: $(DFLAGS)"' $(CFLAGS)\
+		$(DFLAGS) $< -lm
+		touch $@
+
+addW:$(ADDW)
+	cc $(DFLAGS) $(ADDW) $(CLIBES) -o addW
+
+insertW:$(INW)
+	cc $(DFLAGS) $(INW) $(CLIBES) -o insertW
+
+insIon:$(INI)
+	cc $(DFLAGS) $(INI) $(CLIBES) -o insertIon
+
+readbin:$(READF)
+	cc $(DFLAGS) $(READF) $(CLIBES) -o readbin
+
+writebin:$(WRITF)
+	cc $(DFLAGS) $(WRITF) $(CLIBES) -o writebin
+
+addmol:$(ADDMF)
+	cc $(DFLAGS) $(ADDMF) $(CLIBES) -o addmol
+
+#
+#	implicit dependencies
+#
+$(READF):	$(INCLUDE)
+$(WRITF):	$(INCLUDE)
+$(ADDMF):	$(INCLUDE)
+$(INI):	$(INCLUDE)
+$(INW):	$(INCLUDE)
+$(ADDW):	$(INCLUDE)
+
+clean:	;-rm $(READF) $(WRITF) $(ADDMF) readbin writebin addmol

@@ -1,0 +1,15 @@
+Input File -- 	GLY000.min
+Filetype  -- 	.inp
+Datestamp -- 	Sun Aug 17 05:32:57 2008
+Status -- 	EQU
+Number of atoms (natoms) -- 	4802
+Number of solute atoms (nsolute) -- 	0
+X box size (xwall) -- 	17.000
+Y box size (ywall) -- 	17.000
+Z box size (zwall) -- 	17.000
+Equilibration Temperature (EqTemp) -- 	298.000000
+St. Dev. of Equil. Temp. (DEqTemp) -- 	0.000000
+Equilibration Pressure (EqTemp) -- 	0.000000
+St. Dev. of Equil. Press. (DEqPress) --	0.000000
+Extra file flag (xtrInQ) -- 	0
+   #  type  x position    y position    z position  flags parent param1 param2
